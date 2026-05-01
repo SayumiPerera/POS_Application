@@ -99,6 +99,51 @@
 
     </section>
 
+    // item management
+    <section id="item_content" class="content p-5">
+
+        <form class="w-50 m-auto">
+            <h1 class="text-center">Item Management</h1>
+            <div class="mb-3">
+                <label for="item_code_input" class="form-label">Code</label>
+                <input type="text" class="form-control" id="item_code_input">
+            </div>
+            <div class="mb-3">
+                <label for="item_name_input" class="form-label">Name</label>
+                <input type="text" class="form-control" id="item_name_input">
+            </div>
+            <div class="mb-3">
+                <label for="item_unitPrice_input" class="form-label">UnitPrice</label>
+                <input type="number" class="form-control" id="item_unitPrice_input">
+            </div>
+            <div class="mb-3">
+                <label for="item_qty_input" class="form-label">Qty</label>
+                <input type="number" class="form-control" id="item_qty_input">
+            </div>
+            <div class="text-end">
+                <button type="button" id="item_save_btn" class="btn btn-success">Save</button>
+                <button type="button" id="item_update_btn" class="btn btn-primary">Update</button>
+                <button type="button" id="item_delete_btn" class="btn btn-danger">Delete</button>
+                <button type="reset" id="item_reset_btn" class="btn btn-info">Reset</button>
+            </div>
+        </form>
+
+        <table class="table m-5">
+            <thead>
+            <tr>
+                <th scope="col">#Code</th>
+                <th scope="col">Name</th>
+                <th scope="col">UnitPrice</th>
+                <th scope="col">Qty</th>
+            </tr>
+            </thead>
+            <tbody id="item_tbody">
+
+            </tbody>
+        </table>
+
+    </section>
+
 </main>
 
 
