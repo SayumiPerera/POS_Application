@@ -101,3 +101,36 @@ $('#customer_update_btn').on('click', function () {
 //------------------------- End: CustomerCustomer Update ------------------------------
 
 
+
+//------------------------- Start: Customer Delete ------------------------------
+const deleteCustomerData = (sid) => {
+    let index = customer_db.findIndex(item => item.id == sid); // -1
+
+    if(index!==-1) {
+        customer_db.splice(index, 1);
+    }
+
+    cleanCustomerForm();
+    Swal.fire({ icon: "success", title: "Customer deleted successfully!"});
+    loadCustomerTbl();
+}
+
+$('#customer_delete_btn').on('click', function () {
+    let id = $('#customer_id_input').val();
+
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            (id == "") ? Swal.fire({ icon: "error", title: "Invalid Id!"}) :
+                (!(customer_db.find(item => item.id==id))) ? Swal.fire({ icon: "error", title: "customer not found!"}) : deleteCustomerData(id);
+        };
+    });
+});
+//------------------------- End: Customer Delete ------------------------------
