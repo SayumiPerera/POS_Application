@@ -144,6 +144,61 @@
 
     </section>
 
+    // order management
+    <section id="order_content" class="content p-5">
+
+        <form class="w-50 m-auto">
+            <h1 class="text-center">Order Management</h1>
+            <div class="mb-3">
+                <label for="order_id_input" class="form-label">ID</label>
+                <input type="number" class="form-control" id="order_id_input">
+            </div>
+            <div class="mb-3">
+                <label for="order_customerName_input" class="form-label">CustomerName</label>
+                <input type="text" class="form-control" id="order_customerName_input">
+            </div>
+            <div class="mb-3">
+                <label for="order_itemList_input" class="form-label">ItemList</label>
+                <textarea class="form-control" id="order_itemList_input" style="height: 100px"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="order_qty_input" class="form-label">Qty</label>
+                <input type="number" class="form-control" id="order_qty_input">
+            </div>
+            <div class="mb-3">
+                <label for="order_totalPrice_input" class="form-label">TotalPrice</label>
+                <input type="number" class="form-control" id="order_totalPrice_input">
+            </div>
+            <div class="mb-3">
+                <label for="order_date_input" class="form-label">Date</label>
+                <input type="date" class="form-control" id="order_date_input">
+            </div>
+            <div class="text-end">
+                <button type="button" id="order_save_btn" class="btn btn-success">Save</button>
+                <button type="button" id="order_update_btn" class="btn btn-primary">Update</button>
+                <button type="button" id="order_delete_btn" class="btn btn-danger">Delete</button>
+                <button type="reset" id="order_reset_btn" class="btn btn-info">Reset</button>
+            </div>
+        </form>
+
+        <table class="table m-5">
+            <thead>
+            <tr>
+                <th scope="col">#ID</th>
+                <th scope="col">CustomerName</th>
+                <th scope="col">ItemList</th>
+                <th scope="col">Qty</th>
+                <th scope="col">TotalPrice</th>
+                <th scope="col">Date</th>
+            </tr>
+            </thead>
+            <tbody id="order_tbody">
+
+            </tbody>
+        </table>
+
+    </section>
+
 </main>
 
 
