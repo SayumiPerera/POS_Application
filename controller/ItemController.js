@@ -98,3 +98,38 @@ $('#item_update_btn').on('click', function () {
     loadItemTbl();
 })
 //------------------------- End: Item Update ------------------------------
+
+
+
+//------------------------- Start: Item Delete ------------------------------
+const deleteItemData = (sid) => {
+    let index = item_db.findIndex(item => item.code == icode);
+
+    if(index!==-1) {
+        item_db.splice(index, 1);
+    }
+
+    cleanItemForm();
+    Swal.fire({ icon: "success", title: "Item deleted successfully!"});
+    loadItemTbl();
+}
+
+$('#item_delete_btn').on('click', function () {
+    let code = $('#item_code_input').val();
+
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            (code == "") ? Swal.fire({ icon: "error", title: "Invalid Code!"}) :
+                (!(item_db.find(item => item.code==code))) ? Swal.fire({ icon: "error", title: "Item not found!"}) : deleteItemData(code);
+        };
+    });
+});
+//------------------------- End: Item Delete ------------------------------
