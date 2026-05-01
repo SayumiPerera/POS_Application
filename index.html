@@ -40,16 +40,64 @@
                 <div class="nav-link" >Dashboard</div>
             </li>
             <li class="nav-item m-2 text-primary" id="student_sidebar_tab">
-                <div class="nav-link">Student Management</div>
+                <div class="nav-link">Customer Management</div>
             </li>
             <li class="nav-item m-2" id="course_sidebar_tab">
-                <div class="nav-link">Course Management</div>
+                <div class="nav-link">Item Management</div>
             </li>
             <li class="nav-item m-2">
-                <div class="nav-link">Registration Management</div>
+                <div class="nav-link">Order Management</div>
+            </li>
+            <li class="nav-item m-2">
+                <div class="nav-link">Logout</div>
             </li>
         </ul>
     </aside>
+
+    // customer management
+    <section id="customer_content" class="content p-5">
+
+        <form class="w-50 m-auto">
+            <h1 class="text-center">Customer Management</h1>
+            <div class="mb-3">
+                <label for="customer_id_input" class="form-label">ID</label>
+                <input type="number" class="form-control" id="customer_id_input">
+            </div>
+            <div class="mb-3">
+                <label for="customer_name_input" class="form-label">Name</label>
+                <input type="text" class="form-control" id="customer_name_input">
+            </div>
+            <div class="mb-3">
+                <label for="customer_contact_input" class="form-label">Contact</label>
+                <input type="text" class="form-control" id="customer_contact_input">
+            </div>
+            <div class="mb-3">
+                <label for="customer_address_input" class="form-label">Address</label>
+                <textarea class="form-control" id="customer_address_input" style="height: 100px"></textarea>
+            </div>
+            <div class="text-end">
+                <button type="button" id="customer_save_btn" class="btn btn-success">Save</button>
+                <button type="button" id="customer_update_btn" class="btn btn-primary">Update</button>
+                <button type="button" id="customer_delete_btn" class="btn btn-danger">Delete</button>
+                <button type="reset" id="customer_reset_btn" class="btn btn-info">Reset</button>
+            </div>
+        </form>
+
+        <table class="table m-5">
+            <thead>
+            <tr>
+                <th scope="col">#ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Contact</th>
+                <th scope="col">Address</th>
+            </tr>
+            </thead>
+            <tbody id="customer_tbody">
+
+            </tbody>
+        </table>
+
+    </section>
 
 </main>
 
