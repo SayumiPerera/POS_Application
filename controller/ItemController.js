@@ -30,3 +30,34 @@ $('#item_tbody').on('click', 'tr', function () {
     $('#item_qty_input').val(item_obj.qty);
 })
 
+
+//------------------------- Start: Item Save ------------------------------
+const addItemData = (icode, iname, iunitPrice, iqty ) => {
+    let new_item = {
+        code: icode,
+        name: iname,
+        unitPrice: iunitPrice,
+        qty: iqty
+    };
+    item_db.push(new_item);
+    cleanItemForm();
+
+    Swal.fire({ icon: "success", title: "Item saved successfully!"});
+
+    loadItemTbl();
+}
+
+$('#item_save_btn').on('click', function () {
+    let code = $('#item_code_input').val();
+    let name = $('#item_name_input').val();
+    let unitPrice = $('#item_unitPrice_input').val();
+    let qty = $('#item_qty_input').val();
+
+
+    (code == "") ? Swal.fire({ icon: "error", title: "Invalid Code!"}) :
+        (item_db.find(item => item.code==code)) ? Swal.fire({ icon: "error", title: "Code is already exist!"}) :
+            (name == "") ? Swal.fire({ icon: "error", title: "Invalid Name!"}) :
+                (unitPrice == "") ? Swal.fire({ icon: "error", title: "Invalid Unit Price!"})
+                (!check_qty(qty)) ? Swal.fire({ icon: "error", title: "Invalid Qty!"}) : addItemData(id, name, unitPrice, qty);
+})
+//------------------------- End: Item Save ------------------------------
