@@ -4,6 +4,7 @@ import {customer_db} from '../db/db.js';
 //------------------------- Load customer Tbl ------------------------------
 const loadCustomerTbl = () => {
     $('#customer_tbody').empty();
+     let customer_db = getCustomerData();
 
     customer_db.map((item, index) => {
         let new_row = `<tr data-index="${index}"> <td>${item.id}</td> <td>${item.name}</td> <td>${item.address}</td> <td>${item.contact}</td> </tr>`;
@@ -21,7 +22,7 @@ const cleanCustomerForm = () => {
 
 //------------------------- Click on customer Row ------------------------------
 $('#customer_tbody').on('click', 'tr', function () {
-    let customer_obj = customer_db[$(this).index()];
+    let customer_obj = getCustomerDataByIndex($(this).index());
 
     $('#customer_id_input').val(customer_obj.id);
     $('#customer_name_input').val(customer_obj.name);

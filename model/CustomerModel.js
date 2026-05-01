@@ -46,4 +46,50 @@ class Customer {
         this.#address = address;
     }
 
+
+
+    // --------------------------- Add Customer ---------------------------
+    const addCustomerData = (cid, cname, ccontact, caddress) => {
+        let new_customer = new Customer(cid, cname, ccontact, caddress);
+        customer_db.push(new_customer);
+    }
+
+    // --------------------------- Update Customer ---------------------------
+    const updateCustomerData = (cid, cname, ccontact, caddress) => {
+        let obj = customer_db.find(item => item.id == cid);
+
+        if(obj) {
+            obj.name=cname;
+            obj.phone=cphone;
+            obj.address=caddress
+        }
+    }
+
+// --------------------------- Delete Customer ---------------------------
+    const deleteCustomerData = (cid) => {
+        let index = customer_db.findIndex(item => item.id == cid);
+
+        if(index!==-1) {
+            customer_db.splice(index, 1);
+        }
+    }
+
+// --------------------------- Get Customer ---------------------------
+    const getCustomerData = () => {
+        return customer_db;
+    }
+
+// --------------------------- Get Customer by Index ---------------------------
+    const getCustomerDataByIndex = (index) => {
+        return customer_db[index];
+    }
+
+// --------------------------- Get Customer by Id ---------------------------
+    const getCustomerDataById = (id) => {
+        return customer_db.find(item => item.id==id);
+    }
+
+    export {addCustomerData, updateCustomerData, deleteCustomerData, getCustomerData, getCustomerDataByIndex, getCustomerDataById};
+
+
 }
