@@ -28,3 +28,38 @@ $('#customer_tbody').on('click', 'tr', function () {
     $('#customer_address_input').val(customer_obj.address);
     $('#customer_contact_input').val(customer_obj.contact);
 })
+
+
+
+//------------------------- Start: Customer Save ------------------------------
+const addCustomerData = (cid, cname, caddress, ccontact ) => {
+    let new_customer = {
+        id: cid,
+        name: cname,
+        address: caddress,
+        contact: ccontact
+    };
+    customer_db.push(new_customer);
+    cleanCustomerForm();
+
+    Swal.fire({ icon: "success", title: "customer saved successfully!"});
+
+    loadCustomerTbl();
+}
+
+$('#customer_save_btn').on('click', function () {
+    let id = $('#customer_id_input').val();
+    let name = $('#customer_name_input').val();
+    let address = $('#customer_address_input').val();
+    let contact = $('#customer_contact_input').val();
+
+
+    (id == "") ? Swal.fire({ icon: "error", title: "Invalid Id!"}) :
+        (customer_db.find(item => item.id==id)) ? Swal.fire({ icon: "error", title: "Id is already exist!"}) :
+            (name == "") ? Swal.fire({ icon: "error", title: "Invalid Name!"}) :
+                (address == "") ? Swal.fire({ icon: "error", title: "Invalid Address!"})
+                (!check_contact(contact)) ? Swal.fire({ icon: "error", title: "Invalid Contact!"}) : addCustomerData(id, name, address, contact);
+})
+//------------------------- End: Customer Save ------------------------------
+
+
