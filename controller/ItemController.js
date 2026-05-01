@@ -11,3 +11,22 @@ const loadItemTbl = () => {
         $('#item_tbody').append(new_row);
     });
 }
+
+
+//------------------------- Clean Item Form ------------------------------
+const cleanItemForm = () => {
+    $('#item_reset_btn').click();
+}
+
+
+
+//------------------------- Click on Item Row ------------------------------
+$('#item_tbody').on('click', 'tr', function () {
+    let Item_obj = getItemDataByIndex($(this).index());
+
+    $('#item_code_input').val(item_obj.code);
+    $('#item_name_input').val(item_obj.name);
+    $('#item_unitPrice_input').val(item_obj.unitPrice);
+    $('#item_qty_input').val(item_obj.qty);
+})
+
