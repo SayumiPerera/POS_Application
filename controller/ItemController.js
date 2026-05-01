@@ -58,6 +58,43 @@ $('#item_save_btn').on('click', function () {
         (item_db.find(item => item.code==code)) ? Swal.fire({ icon: "error", title: "Code is already exist!"}) :
             (name == "") ? Swal.fire({ icon: "error", title: "Invalid Name!"}) :
                 (unitPrice == "") ? Swal.fire({ icon: "error", title: "Invalid Unit Price!"})
-                (!check_qty(qty)) ? Swal.fire({ icon: "error", title: "Invalid Qty!"}) : addItemData(id, name, unitPrice, qty);
+                (!check_qty(qty)) ? Swal.fire({ icon: "error", title: "Invalid Qty!"}) : addItemData(code, name, unitPrice, qty);
 })
 //------------------------- End: Item Save ------------------------------
+
+
+//------------------------- Start: Item Update ------------------------------
+const updateItemData = (icode, iname, iunitPrice, iqty) => {
+    let obj = item_db.find(item => item.code == icode);
+
+    if(obj) {
+        obj.name=iname;
+        obj.unitPrice=iunitPrice;
+        obj.qty=iqty;
+    }
+
+    cleanItemForm();
+
+    Swal.fire({ icon: "success", title: "Item updated successfully!"});
+
+    loadItemTbl();
+}
+
+
+$('#item_update_btn').on('click', function () {
+    let code = $('#item_code_input').val();
+    let name = $('#item_name_input').val();
+    let unitPrice = $('#item_unitPrice_input').val();
+    let qty = $('#item_qty_input').val();
+
+    (code == "") ? Swal.fire({ icon: "error", title: "Invalid Code!"}) :
+        (!(getItemDataById(code))) ? Swal.fire({ icon: "error", title: "Item not found!"}) :
+            (name == "") ? Swal.fire({ icon: "error", title: "Invalid Name!"}) :
+                (!check_unitPrice(unitPrice)) ? Swal.fire({ icon: "error", title: "Invalid Unit Price!"}) :
+                    (qty == "") ? Swal.fire({ icon: "error", title: "Invalid Qty!"}) : updateItemData(code, name, unitPrice ,qty );
+
+    cleanItemForm();
+    Swal.fire({ icon: "success", title: "Item updated successfully!"});
+    loadItemTbl();
+})
+//------------------------- End: Item Update ------------------------------
