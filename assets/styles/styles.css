@@ -1,0 +1,13 @@
+#navbar {
+    height: 50px;
+}
+#sidebar {
+    top: 50px;
+    width: 250px;
+}
+
+.content {
+    min-height: calc(100vh - 50px);
+    margin-left: 250px;
+    margin-top: 50px;
+}
