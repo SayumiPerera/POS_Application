@@ -60,7 +60,7 @@ class Customer {
 
         if(obj) {
             obj.name=cname;
-            obj.phone=cphone;
+            obj.contact=ccontact;
             obj.address=caddress
         }
     }
