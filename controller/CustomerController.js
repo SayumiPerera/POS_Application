@@ -10,3 +10,21 @@ const loadCustomerTbl = () => {
         $('#customer_tbody').append(new_row);
     });
 }
+
+
+//------------------------- Clean customer Form ------------------------------
+const cleanCustomerForm = () => {
+    $('#customer_reset_btn').click();
+}
+
+
+
+//------------------------- Click on customer Row ------------------------------
+$('#customer_tbody').on('click', 'tr', function () {
+    let customer_obj = customer_db[$(this).index()];
+
+    $('#customer_id_input').val(customer_obj.id);
+    $('#customer_name_input').val(customer_obj.name);
+    $('#customer_address_input').val(customer_obj.address);
+    $('#customer_contact_input').val(customer_obj.contact);
+})
