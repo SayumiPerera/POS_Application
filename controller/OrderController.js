@@ -64,3 +64,30 @@ $('#order_save_btn').on('click', function () {
 })
 //------------------------- End: Order Save ------------------------------
 
+
+//------------------------- Start: Order Update ------------------------------
+$('#order_update_btn').on('click', function () {
+    let id           = $('#order_id_input').val();
+    let customerName = $('#order_customerName_input').val();
+    let itemList     = $('#order_itemList_input').val();
+    let qty          = $('#order_qty_input').val();
+    let totalPrice   = $('#order_totalPrice_input').val();
+    let date         = $('#order_date_input').val();
+
+    (id === "") ? Swal.fire({ icon: "error", title: "Invalid Id!" }) :
+        (!(getOrderDataById(id))) ? Swal.fire({ icon: "error", title: "Order not found!" }) :
+            (customerName === "") ? Swal.fire({ icon: "error", title: "Invalid Customer Name!" }) :
+                (itemList === "") ? Swal.fire({ icon: "error", title: "Invalid Item List!" }) :
+                    (qty === "") ? Swal.fire({ icon: "error", title: "Invalid Qty!" }) :
+                        (totalPrice === "") ? Swal.fire({ icon: "error", title: "Invalid Total Price!" }) :
+                            (date === "") ? Swal.fire({ icon: "error", title: "Invalid Date!" }) :
+                                (() => {
+                                    updateOrderData(id, customerName, itemList, qty, totalPrice, date);
+                                    cleanOrderForm();
+                                    Swal.fire({ icon: "success", title: "Order updated successfully!" });
+                                    loadOrderTbl();
+                                })();
+})
+//------------------------- End: Order Update ------------------------------
+
+
