@@ -1,5 +1,5 @@
 import { addItemData, updateItemData, deleteItemData, getItemData, getItemDataByIndex, getItemDataByCode } from '../model/ItemModel.js';
-import { check_qty, check_unitPrice } from '../util/regex_utils.js';
+import { check_qty, check_unitPrice } from '../utils/regex_utils.js';
 
 
 //------------------------- Load Item Table ------------------------------

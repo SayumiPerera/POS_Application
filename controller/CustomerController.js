@@ -1,5 +1,5 @@
 import { addCustomerData, updateCustomerData, deleteCustomerData, getCustomerData, getCustomerDataByIndex, getCustomerDataById } from '../model/CustomerModel.js';
-import { check_contact } from '../util/regex_utils.js';
+import { check_contact } from '../utils/regex_utils.js';
 
 
 //------------------------- Load Customer Table ------------------------------
