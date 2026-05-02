@@ -1,121 +1,86 @@
-import {customer_db} from '../db/db.js';
+import { addCustomerData, updateCustomerData, deleteCustomerData, getCustomerData, getCustomerDataByIndex, getCustomerDataById } from '../model/CustomerModel.js';
+import { check_contact } from '../util/regex_utils.js';
 
 
-//------------------------- Load customer Tbl ------------------------------
+//------------------------- Load Customer Table ------------------------------
 const loadCustomerTbl = () => {
     $('#customer_tbody').empty();
-     let customer_db = getCustomerData();
+    let customers = getCustomerData();
 
-    customer_db.map((item, index) => {
-        let new_row = `<tr data-index="${index}"> <td>${item.id}</td> <td>${item.name}</td> <td>${item.address}</td> <td>${item.contact}</td> </tr>`;
+    customers.map((item, index) => {
+        let new_row = `<tr data-index="${index}">
+            <td>${item.id}</td>
+            <td>${item.name}</td>
+            <td>${item.contact}</td>
+            <td>${item.address}</td>
+        </tr>`;
         $('#customer_tbody').append(new_row);
     });
 }
 
 
-//------------------------- Clean customer Form ------------------------------
+//------------------------- Clean Customer Form ------------------------------
 const cleanCustomerForm = () => {
     $('#customer_reset_btn').click();
 }
 
 
-
-//------------------------- Click on customer Row ------------------------------
+//------------------------- Click on Customer Row ------------------------------
 $('#customer_tbody').on('click', 'tr', function () {
     let customer_obj = getCustomerDataByIndex($(this).index());
 
     $('#customer_id_input').val(customer_obj.id);
     $('#customer_name_input').val(customer_obj.name);
-    $('#customer_address_input').val(customer_obj.address);
     $('#customer_contact_input').val(customer_obj.contact);
+    $('#customer_address_input').val(customer_obj.address);
 })
 
 
-
 //------------------------- Start: Customer Save ------------------------------
-const addCustomerData = (cid, cname, caddress, ccontact ) => {
-    let new_customer = {
-        id: cid,
-        name: cname,
-        address: caddress,
-        contact: ccontact
-    };
-    customer_db.push(new_customer);
-    cleanCustomerForm();
-
-    Swal.fire({ icon: "success", title: "customer saved successfully!"});
-
-    loadCustomerTbl();
-}
-
 $('#customer_save_btn').on('click', function () {
-    let id = $('#customer_id_input').val();
-    let name = $('#customer_name_input').val();
-    let address = $('#customer_address_input').val();
+    let id      = $('#customer_id_input').val();
+    let name    = $('#customer_name_input').val();
     let contact = $('#customer_contact_input').val();
+    let address = $('#customer_address_input').val();
 
-
-    (id == "") ? Swal.fire({ icon: "error", title: "Invalid Id!"}) :
-        (customer_db.find(item => item.id==id)) ? Swal.fire({ icon: "error", title: "Id is already exist!"}) :
-            (name == "") ? Swal.fire({ icon: "error", title: "Invalid Name!"}) :
-                (address == "") ? Swal.fire({ icon: "error", title: "Invalid Address!"})
-                (!check_contact(contact)) ? Swal.fire({ icon: "error", title: "Invalid Contact!"}) : addCustomerData(id, name, address, contact);
+    (id === "") ? Swal.fire({ icon: "error", title: "Invalid Id!" }) :
+        (getCustomerDataById(id)) ? Swal.fire({ icon: "error", title: "Id already exists!" }) :
+            (name === "") ? Swal.fire({ icon: "error", title: "Invalid Name!" }) :
+                (!check_contact(contact)) ? Swal.fire({ icon: "error", title: "Invalid Contact!" }) :
+                    (address === "") ? Swal.fire({ icon: "error", title: "Invalid Address!" }) :
+                        (() => {
+                            addCustomerData(id, name, contact, address);
+                            cleanCustomerForm();
+                            Swal.fire({ icon: "success", title: "Customer saved successfully!" });
+                            loadCustomerTbl();
+                        })();
 })
 //------------------------- End: Customer Save ------------------------------
 
 
-
 //------------------------- Start: Customer Update ------------------------------
-const updateCustomerData = (cid, cname, ccontact, caddress) => {
-    let obj = customer_db.find(item => item.id == cid);
-
-    if(obj) {
-        obj.name=cname;
-        obj.contact=ccontact;
-        obj.address=caddress;
-    }
-
-    cleanCustomerForm();
-
-    Swal.fire({ icon: "success", title: "Customer updated successfully!"});
-
-    loadCustomerTbl();
-}
-
-
 $('#customer_update_btn').on('click', function () {
-    let id = $('#customer_id_input').val();
-    let name = $('#customer_name_input').val();
+    let id      = $('#customer_id_input').val();
+    let name    = $('#customer_name_input').val();
     let contact = $('#customer_contact_input').val();
     let address = $('#customer_address_input').val();
 
-    (id == "") ? Swal.fire({ icon: "error", title: "Invalid Id!"}) :
-        (!(getCustomerDataById(id))) ? Swal.fire({ icon: "error", title: "Customer not found!"}) :
-            (name == "") ? Swal.fire({ icon: "error", title: "Invalid Name!"}) :
-                (!check_contact(contact)) ? Swal.fire({ icon: "error", title: "Invalid Contact!"}) :
-                    (address == "") ? Swal.fire({ icon: "error", title: "Invalid Address!"}) : updateCustomerData(id, name, contact ,address );
-
-    cleanCustomerForm();
-    Swal.fire({ icon: "success", title: "Customer updated successfully!"});
-    loadCustomerTbl();
+    (id === "") ? Swal.fire({ icon: "error", title: "Invalid Id!" }) :
+        (!(getCustomerDataById(id))) ? Swal.fire({ icon: "error", title: "Customer not found!" }) :
+            (name === "") ? Swal.fire({ icon: "error", title: "Invalid Name!" }) :
+                (!check_contact(contact)) ? Swal.fire({ icon: "error", title: "Invalid Contact!" }) :
+                    (address === "") ? Swal.fire({ icon: "error", title: "Invalid Address!" }) :
+                        (() => {
+                            updateCustomerData(id, name, contact, address);
+                            cleanCustomerForm();
+                            Swal.fire({ icon: "success", title: "Customer updated successfully!" });
+                            loadCustomerTbl();
+                        })();
 })
-//------------------------- End: CustomerCustomer Update ------------------------------
-
+//------------------------- End: Customer Update ------------------------------
 
 
 //------------------------- Start: Customer Delete ------------------------------
-const deleteCustomerData = (sid) => {
-    let index = customer_db.findIndex(item => item.id == sid); // -1
-
-    if(index!==-1) {
-        customer_db.splice(index, 1);
-    }
-
-    cleanCustomerForm();
-    Swal.fire({ icon: "success", title: "Customer deleted successfully!"});
-    loadCustomerTbl();
-}
-
 $('#customer_delete_btn').on('click', function () {
     let id = $('#customer_id_input').val();
 
@@ -129,9 +94,15 @@ $('#customer_delete_btn').on('click', function () {
         confirmButtonText: "Yes, delete it!"
     }).then((result) => {
         if (result.isConfirmed) {
-            (id == "") ? Swal.fire({ icon: "error", title: "Invalid Id!"}) :
-                (!(customer_db.find(item => item.id==id))) ? Swal.fire({ icon: "error", title: "customer not found!"}) : deleteCustomerData(id);
-        };
+            (id === "") ? Swal.fire({ icon: "error", title: "Invalid Id!" }) :
+                (!(getCustomerDataById(id))) ? Swal.fire({ icon: "error", title: "Customer not found!" }) :
+                    (() => {
+                        deleteCustomerData(id);
+                        cleanCustomerForm();
+                        Swal.fire({ icon: "success", title: "Customer deleted successfully!" });
+                        loadCustomerTbl();
+                    })();
+        }
     });
-});
+})
 //------------------------- End: Customer Delete ------------------------------
