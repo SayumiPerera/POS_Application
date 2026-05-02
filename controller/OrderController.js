@@ -1,4 +1,4 @@
-import { addOrderData, updateOrderData, deleteOrderData, getOrderData, getOrderDataByIndex, getOrderDataById } from '../model/OrderModel.js';
+import { addOrderData, updateOrderData, deleteOrderData, getOrderData, getOrderDataByIndex, getOrderDataById , searchOrdersByCustomer} from '../model/OrderModel.js';
 
 
 //------------------------- Load Order Table ------------------------------
@@ -117,3 +117,5 @@ $('#order_delete_btn').on('click', function () {
     });
 })
 //------------------------- End: Order Delete ------------------------------
+
+

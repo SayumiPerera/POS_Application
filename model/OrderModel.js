@@ -111,4 +111,11 @@ const getOrderDataById = (id) => {
     return order_db.find(order => order.id === id);
 }
 
-export { addOrderData, updateOrderData, deleteOrderData, getOrderData, getOrderDataByIndex, getOrderDataById };
+// --------------------------- Search Orders by Customer Name ---------------------------
+const searchOrdersByCustomer = (name) => {
+    return order_db.filter(order =>
+        order.customerName.toLowerCase().includes(name.toLowerCase())
+    );
+}
+
+export { addOrderData, updateOrderData, deleteOrderData, getOrderData, getOrderDataByIndex, getOrderDataById , searchOrdersByCustomer};
