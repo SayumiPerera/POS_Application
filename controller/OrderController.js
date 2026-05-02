@@ -143,3 +143,22 @@ const loadOrderHistoryTbl = (orders = getOrderData()) => {
         $('#order_history_tbody').append(new_row);
     });
 }
+
+//------------------------- Search Order History ------------------------------
+$('#order_history_search_btn').on('click', function () {
+    let searchVal = $('#order_history_search_input').val();
+
+    if (searchVal === "") {
+        loadOrderHistoryTbl();  // show all if empty
+    } else {
+        let results = searchOrdersByCustomer(searchVal);
+        loadOrderHistoryTbl(results);
+    }
+})
+
+
+//------------------------- Clear Search ------------------------------
+$('#order_history_clear_btn').on('click', function () {
+    $('#order_history_search_input').val('');
+    loadOrderHistoryTbl();
+})
