@@ -32,6 +32,10 @@ $('#item_sidebar_tab').on('click',      () => showSection('item_content'));
 $('#order_sidebar_tab').on('click',     () => showSection('order_content'));
 
 
+$('#order_history_sidebar_tab').on('click', () => {
+    showSection('order_history_content');
+    loadOrderHistoryTbl();
+});
 
 
 
