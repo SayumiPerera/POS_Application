@@ -119,3 +119,27 @@ $('#order_delete_btn').on('click', function () {
 //------------------------- End: Order Delete ------------------------------
 
 
+//------------------------- Load Order History Table ------------------------------
+
+const loadOrderHistoryTbl = (orders = getOrderData()) => {
+    $('#order_history_tbody').empty();
+
+    if (orders.length === 0) {
+        $('#order_history_tbody').append(
+            `<tr><td colspan="6" class="text-center">No orders found</td></tr>`
+        );
+        return;
+    }
+
+    orders.map((item, index) => {
+        let new_row = `<tr data-index="${index}">
+            <td>${item.id}</td>
+            <td>${item.customerName}</td>
+            <td>${item.itemList}</td>
+            <td>${item.qty}</td>
+            <td>${item.totalPrice}</td>
+            <td>${item.date}</td>
+        </tr>`;
+        $('#order_history_tbody').append(new_row);
+    });
+}
