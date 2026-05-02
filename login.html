@@ -4,110 +4,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log in</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>POS System - Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="assets/styles/styles.css">
-</head>
 
+
+
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f0f0f0;
+    }
+
+    .login-card {
+        width: 780px;
+        height: 420px;
+        display: flex;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    /* ---- Left Side ---- */
+    .left-side {
+        width: 45%;
+        background-color: #e8a04a;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .left-side h2 {
+        font-style: italic;
+        font-weight: 700;
+        font-size: 1.6rem;
+        color: #000;
+    }
+
+    .pos-btn {
+        background-color: #6b2f2f;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 14px 30px;
+        font-weight: 600;
+        font-size: 1rem;
+    }
+
+    /* ---- Right Side ---- */
+    .right-side {
+        width: 55%;
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 40px;
+        gap: 20px;
+    }
+
+    .right-side p.subtitle {
+        font-style: italic;
+        color: #555;
+        font-size: 1rem;
+        margin-bottom: 5px;
+    }
+
+    /* ---- Input Groups ---- */
+    .input-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .input-row i {
+        font-size: 1.4rem;
+        color: #333;
+    }
+
+    .input-wrapper {
+        flex: 1;
+    }
+
+    .input-wrapper label {
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: #222;
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    .input-wrapper input {
+        width: 100%;
+        background-color: #fde8e8;
+        border: none;
+        border-bottom: 2px solid #c0a0a0;
+        border-radius: 4px;
+        padding: 8px 10px;
+        outline: none;
+        font-size: 0.95rem;
+    }
+
+    .password-field {
+        position: relative;
+    }
+
+    .password-field input {
+        padding-right: 36px;
+    }
+
+    .toggle-eye {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #888;
+        font-size: 1rem;
+    }
+
+    /* ---- Sign In Button ---- */
+    .signin-btn {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: transparent;
+        border: 2px solid #c8a060;
+        border-radius: 8px;
+        padding: 10px 20px;
+        font-weight: 600;
+        font-size: 1rem;
+        color: #333;
+        cursor: pointer;
+        margin-top: 5px;
+    }
+
+    .signin-btn:hover {
+        background-color: #e8a04a;
+        color: #fff;
+        border-color: #e8a04a;
+    }
+
+    .signin-btn .icons {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+</style>
+</head>
 <body>
 
+<div class="login-card">
 
-
-<!--  SUCCESS OVERLAY -->
-<div id="success_overlay">
-    <div class="spinner-border text-white" style="width:48px;height:48px;" role="status"></div>
-    <p>Login successful! Redirecting...</p>
-</div>
-
-<!--LOGIN CARD -->
-<div class="login-wrapper">
-
-    <!-- LEFT PANEL -->
-    <div class="left-panel">
-        <div class="brand-logo"><span>Arts & Crafts</span>POS</div>
-        <!--        <div class="welcome-icon">🛒</div>-->
+    <!-- Left Side -->
+    <div class="left-side">
         <h2>Welcome Back...</h2>
-        <p>Sign in to manage your<br>customers, items & orders.</p>
-        <div class="pos-badge">Point of Sale System </div>
+        <button class="pos-btn">POS System</button>
     </div>
 
-    <!-- RIGHT PANEL -->
-    <div class="right-panel">
-        <p class="login-heading">Log in to continue...</p>
-        <h3>Sign In</h3>
-        <p class="text-muted mb-4" style="font-size:13px;">Enter your credentials to access the dashboard.</p>
+    <!-- Right Side -->
+    <div class="right-side">
+        <p class="subtitle">Log in to continue...</p>
 
-        <!-- ERROR ALERT -->
-        <div class="alert alert-danger" id="login_error" role="alert">
-            <i class="bi bi-exclamation-triangle-fill me-2"></i>
-            <span id="login_error_msg">Invalid username or password.</span>
+        <!-- Username -->
+        <div class="input-row">
+            <i class="bi bi-person"></i>
+            <div class="input-wrapper">
+                <label>Username :</label>
+                <label for="username_input"></label><input type="text" id="username_input">
+            </div>
         </div>
 
-        <!--  FORM -->
-        <form id="login_form" novalidate>
-
-            <!-- Username Row -->
-            <div class="row mb-3 align-items-center">
-                <label for="login_username" class="col-sm-3 col-form-label fw-semibold">
-                    Username :
-                </label>
-                <div class="col-sm-9">
-                    <div class="input-group">
-                        <span class="input-group-text">
-                            <i class="bi bi-person-fill"></i>
-                        </span>
-                        <input type="text" class="form-control" id="login_username" placeholder="Enter username" autocomplete="off" required>
-                    </div>
+        <!-- Password -->
+        <div class="input-row">
+            <i class="bi bi-lock"></i>
+            <div class="input-wrapper">
+                <label>Password :</label>
+                <div class="password-field">
+                    <label for="password_input"></label><input type="password" id="password_input">
+                    <i class="bi bi-eye-slash toggle-eye" id="toggle_eye"></i>
                 </div>
             </div>
+        </div>
 
-            <!-- Password Row -->
-            <div class="row mb-4 align-items-center">
-                <label for="login_password" class="col-sm-3 col-form-label fw-semibold">
-                    Password :
-                </label>
-                <div class="col-sm-9">
-                    <div class="input-group">
-                        <span class="input-group-text">
-                            <i class="bi bi-lock-fill"></i>
-                        </span>
-                        <input type="password" class="form-control pw-input" id="login_password" placeholder="Enter password" required>
-                        <button class="toggle-pw" type="button" id="toggle_pw_btn" title="Show/hide password">
-                            <i class="bi bi-eye-slash" id="toggle_pw_icon"></i>
-                        </button>
-                    </div>
-                </div>
+        <!-- Sign In Button -->
+        <button class="signin-btn" id="signin_btn">
+            <div class="icons">
+                <i class="bi bi-arrow-right-circle"></i>
+                <span>Sign in</span>
             </div>
-
-            <!-- Remember me + Sign in row -->
-            <!--            <div class="row align-items-center">-->
-            <!--                <div class="col-sm-3">-->
-            <!--                    <div class="form-check">-->
-            <!--                        <input class="form-check-input" type="checkbox" id="remember_me">-->
-            <!--                        <label class="form-check-label" for="remember_me">Remember me</label>-->
-            <!--                    </div>-->
-            <!--                </div>-->
-
-<!--            Sign in button-->
-            <div class="col-sm-9 d-flex align-items-center gap-3 flex-wrap">
-                <button type="button" class="btn-signin" id="login_btn">
-                    <span class="spinner-border" role="status" aria-hidden="true"></span>
-                    Sign in
-                    <i class="bi bi-arrow-right btn-arrow"></i>
-                </button>
-                <div>
-                    <i class="bi bi-arrow-repeat text-muted" style="font-size:20px; cursor:pointer;" title="Reset" id="reset_btn"></i>
-                </div>
-            </div>
-            <!--            </div>-->
-
-        </form>
+            <i class="bi bi-box-arrow-in-right"></i>
+        </button>
 
     </div>
-
 </div>
+
+
+
 
 
 

@@ -19,6 +19,7 @@ $('#item_content').css('display', 'none');
 $('#order_content').css('display', 'none');
 $('#dashboard_content').css('display', 'block');
 
+
 // ---- Section Switcher ----
 function showSection(sectionId) {
     $('.content').css('display', 'none');
