@@ -91,3 +91,29 @@ $('#order_update_btn').on('click', function () {
 //------------------------- End: Order Update ------------------------------
 
 
+//------------------------- Start: Order Delete ------------------------------
+$('#order_delete_btn').on('click', function () {
+    let id = $('#order_id_input').val();
+
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            (id === "") ? Swal.fire({ icon: "error", title: "Invalid Id!" }) :
+                (!(getOrderDataById(id))) ? Swal.fire({ icon: "error", title: "Order not found!" }) :
+                    (() => {
+                        deleteOrderData(id);
+                        cleanOrderForm();
+                        Swal.fire({ icon: "success", title: "Order deleted successfully!" });
+                        loadOrderTbl();
+                    })();
+        }
+    });
+})
+//------------------------- End: Order Delete ------------------------------
