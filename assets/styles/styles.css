@@ -11,3 +11,17 @@ body {
     height: 100vh;
     overflow: hidden;
 }
+
+/* ========== SIDEBAR ========== */
+#sidebar {
+    width: 220px;
+    min-width: 220px;
+    background-color: #e8a04a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 24px;
+    gap: 6px;
+    height: 100vh;
+    transition: width 0.3s;
+}
