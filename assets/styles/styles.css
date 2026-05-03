@@ -271,3 +271,20 @@ body {
     color: #e8a04a;
     margin-bottom: 10px;
 }
+
+/* ========== ORDER HISTORY SEARCH ========== */
+.history-search-bar {
+    display: flex;
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto 24px auto;
+}
+
+.history-search-bar input {
+    flex: 1;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 8px 14px;
+    background: #fff3ec;
+    outline: none;
+}
