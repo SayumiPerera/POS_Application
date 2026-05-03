@@ -59,3 +59,13 @@ body {
     background-color: rgba(0,0,0,0.15);
     font-weight: 700;
 }
+
+.sidebar-item i {
+    font-size: 1.1rem;
+}
+
+.sidebar-item.logout-item {
+    margin-top: auto;
+    color: #6b2f2f;
+    font-weight: 700;
+}
