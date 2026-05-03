@@ -98,3 +98,17 @@ body {
     font-size: 1.4rem;
     color: #555;
 }
+#page-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-style: italic;
+    color: #222;
+}
+
+#menu_btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #555;
+    cursor: pointer;
+}
