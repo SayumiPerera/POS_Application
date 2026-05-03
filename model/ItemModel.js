@@ -1,6 +1,6 @@
 // ---- Database ----
 // let item_db = [];
-
+import {item_db} from '../db/db.js';
 
 class Item {
     #code;

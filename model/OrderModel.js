@@ -1,12 +1,14 @@
-// ---- Database ----
-let order_db = [];
+// // ---- Database ----
+// let order_db = [];
 
-// ---- Order Class ----
+import {order_db} from '../db/db.js';
+
+
 class Order {
     #id;
     #customerName;
-    #itemList;      // array of cart items [{code, name, price, qty, subtotal}]
-    #qty;           // total qty of all items
+    #itemList;
+    #qty;
     #totalPrice;
     #date;
 
@@ -19,21 +21,45 @@ class Order {
         this.#date         = date;
     }
 
-    get id()           { return this.#id; }
-    get customerName() { return this.#customerName; }
-    get itemList()     { return this.#itemList; }
-    get qty()          { return this.#qty; }
-    get totalPrice()   { return this.#totalPrice; }
-    get date()         { return this.#date; }
+    get id()  {
+        return this.#id;
+    }
+    get customerName() {
+        return this.#customerName;
+    }
+    get itemList() {
+        return this.#itemList;
+    }
+    get qty() {
+        return this.#qty;
+    }
+    get totalPrice() {
+        return this.#totalPrice;
+    }
+    get date() {
+        return this.#date;
+    }
 
-    set id(id)                     { this.#id = id; }
-    set customerName(customerName) { this.#customerName = customerName; }
-    set itemList(itemList)         { this.#itemList = itemList; }
-    set qty(qty)                   { this.#qty = qty; }
-    set totalPrice(totalPrice)     { this.#totalPrice = totalPrice; }
-    set date(date)                 { this.#date = date; }
+    set id(id) {
+        this.#id = id;
+    }
+    set customerName(customerName) {
+        this.#customerName = customerName;
+    }
+    set itemList(itemList){
+        this.#itemList = itemList;
+    }
+    set qty(qty) {
+        this.#qty = qty;
+    }
+    set totalPrice(totalPrice){
+        this.#totalPrice = totalPrice;
+    }
+    set date(date) {
+        this.#date = date;
+    }
 
-}  // ← class ends here
+}
 
 
 // --------------------------- Add Order ---------------------------

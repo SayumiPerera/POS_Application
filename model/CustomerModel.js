@@ -1,5 +1,6 @@
 // ---- Database ----
 // let customer_db = [];
+import {customer_db} from '../db/db.js';
 
 class Customer {
     #id;
