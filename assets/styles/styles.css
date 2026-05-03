@@ -88,3 +88,13 @@ body {
     justify-content: space-between;
     min-height: 64px;
 }
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.topbar-left i {
+    font-size: 1.4rem;
+    color: #555;
+}
