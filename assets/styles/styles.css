@@ -126,3 +126,19 @@ body {
 .content.active {
     display: block;
 }
+/* ========== SEARCH BAR ========== */
+.section-search {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.section-search input {
+    width: 220px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    padding: 6px 14px;
+    background: #fff3ec;
+    font-size: 0.87rem;
+    outline: none;
+}
