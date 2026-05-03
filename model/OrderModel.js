@@ -1,73 +1,39 @@
+// ---- Database ----
+let order_db = [];
+
+// ---- Order Class ----
 class Order {
-    #id
+    #id;
     #customerName;
-    #itemList;
-    #qty;
+    #itemList;      // array of cart items [{code, name, price, qty, subtotal}]
+    #qty;           // total qty of all items
     #totalPrice;
     #date;
 
-
     constructor(id, customerName, itemList, qty, totalPrice, date) {
-        this.#id = id;
+        this.#id           = id;
         this.#customerName = customerName;
-        this.#itemList = itemList;
-        this.#qty = qty;
-        this.#totalPrice = totalPrice;
-        this.#date = date;
-
+        this.#itemList     = itemList;
+        this.#qty          = qty;
+        this.#totalPrice   = totalPrice;
+        this.#date         = date;
     }
 
+    get id()           { return this.#id; }
+    get customerName() { return this.#customerName; }
+    get itemList()     { return this.#itemList; }
+    get qty()          { return this.#qty; }
+    get totalPrice()   { return this.#totalPrice; }
+    get date()         { return this.#date; }
 
-    get id(){
-        return this.#id;
-    }
+    set id(id)                     { this.#id = id; }
+    set customerName(customerName) { this.#customerName = customerName; }
+    set itemList(itemList)         { this.#itemList = itemList; }
+    set qty(qty)                   { this.#qty = qty; }
+    set totalPrice(totalPrice)     { this.#totalPrice = totalPrice; }
+    set date(date)                 { this.#date = date; }
 
-    get customerName(){
-        return this.#customerName;
-    }
-
-    get itemList() {
-        return this.#itemList;
-    }
-
-    get qty() {
-        return this.#qty;
-    }
-
-    get totalPrice() {
-        return this.#totalPrice;
-    }
-
-    get date() {
-        return this.#date;
-    }
-
-
-    set id(id) {
-        this.#id = id;
-    }
-
-    set customerName(customerName) {
-        this.#customerName = customerName;
-    }
-
-    set itemList(itemList) {
-        this.#itemList = itemList;
-    }
-
-    set qty(qty) {
-        this.#qty = qty;
-    }
-
-    set totalPrice(totalPrice) {
-        this.#totalPrice = totalPrice;
-    }
-
-    set date(date) {
-        this.#date = date;
-    }
-
-}
+}  // ← class ends here
 
 
 // --------------------------- Add Order ---------------------------
@@ -76,17 +42,6 @@ const addOrderData = (oid, ocustomerName, oitemList, oqty, ototalPrice, odate) =
     order_db.push(new_order);
 }
 
-// --------------------------- Update Order ---------------------------
-const updateOrderData = (oid, ocustomerName, oitemList, oqty, ototalPrice, odate) => {
-    let obj = order_db.find(order => order.id === oid);
-    if (obj) {
-        obj.customerName = ocustomerName;
-        obj.itemList = oitemList;
-        obj.qty = oqty;
-        obj.totalPrice = ototalPrice;
-        obj.date = odate;
-    }
-}
 
 // --------------------------- Delete Order ---------------------------
 const deleteOrderData = (oid) => {
@@ -96,20 +51,24 @@ const deleteOrderData = (oid) => {
     }
 }
 
+
 // --------------------------- Get All Orders ---------------------------
 const getOrderData = () => {
     return order_db;
 }
+
 
 // --------------------------- Get Order by Index ---------------------------
 const getOrderDataByIndex = (index) => {
     return order_db[index];
 }
 
-// --------------------------- Get Order by Id ---------------------------
+
+// --------------------------- Get Order by ID ---------------------------
 const getOrderDataById = (id) => {
     return order_db.find(order => order.id === id);
 }
+
 
 // --------------------------- Search Orders by Customer Name ---------------------------
 const searchOrdersByCustomer = (name) => {
@@ -118,4 +77,5 @@ const searchOrdersByCustomer = (name) => {
     );
 }
 
-export { addOrderData, updateOrderData, deleteOrderData, getOrderData, getOrderDataByIndex, getOrderDataById , searchOrdersByCustomer};
+
+export { addOrderData, deleteOrderData, getOrderData, getOrderDataByIndex, getOrderDataById, searchOrdersByCustomer };
