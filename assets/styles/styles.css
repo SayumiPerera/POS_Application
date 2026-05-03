@@ -260,3 +260,14 @@ body {
     font-weight: 800;
     color: #e8a04a;
 }
+.dash-card .dash-label {
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 4px;
+}
+
+.dash-card i {
+    font-size: 2rem;
+    color: #e8a04a;
+    margin-bottom: 10px;
+}
