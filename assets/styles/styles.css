@@ -77,3 +77,14 @@ body {
     flex-direction: column;
     overflow: hidden;
 }
+
+/* ========== TOP NAVBAR ========== */
+#topbar {
+    background: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 64px;
+}
