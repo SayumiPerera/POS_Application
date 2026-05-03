@@ -149,7 +149,7 @@ $('#order_history_search_btn').on('click', function () {
     let searchVal = $('#order_history_search_input').val();
 
     if (searchVal === "") {
-        loadOrderHistoryTbl();  // show all if empty
+        loadOrderHistoryTbl();
     } else {
         let results = searchOrdersByCustomer(searchVal);
         loadOrderHistoryTbl(results);
