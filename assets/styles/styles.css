@@ -288,3 +288,11 @@ body {
     background: #fff3ec;
     outline: none;
 }
+
+/* ========== SIDEBAR HIDDEN ========== */
+#sidebar.hidden {
+    width: 0;
+    min-width: 0;
+    overflow: hidden;
+    padding: 0;
+}
