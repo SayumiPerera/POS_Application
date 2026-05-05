@@ -82,3 +82,31 @@ $('#logout_sidebar_tab').on('click', function () {
 $('#menu_btn').on('click', function () {
     $('#sidebar').toggleClass('open');
 });
+
+
+
+
+// let sidebar_open = true;
+// $('#menu_btn').on('click', function () {
+//     if(sidebar_open) {
+//         $('#sidebar').css({display: 'none'});
+//         $('.content').css({marginLeft: '0px'});
+//         sidebar_open = false;
+//     } else {
+//         $('#sidebar').css({display: 'block'});
+//         $('.content').css({marginLeft: '250px'});
+//         sidebar_open = true;
+//     }
+// })
+//
+// $('#customer_content').css('display', 'none');
+//
+// $('#item_sidebar_tab').on('click', function () {
+//     $('#customer_content').css('display', 'none');
+//     $('#item_content').css('display', 'block');
+// })
+//
+// $('#customer_sidebar_tab').on('click', function () {
+//     $('#customer_content').css('display', 'block');
+//     $('#item_content').css('display', 'none');
+// })
