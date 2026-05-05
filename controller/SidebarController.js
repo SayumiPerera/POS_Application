@@ -1,56 +1,68 @@
-// ------------------------ Sidebar Handler --------------------------
-
-// ---- Sidebar Toggle ----
-let sidebar_open = true;
-
-$('#menu_btn').on('click', function () {
-    if (sidebar_open) {
-        $('#sidebar').addClass('hidden');
-        sidebar_open = false;
-    } else {
-        $('#sidebar').removeClass('hidden');
-        sidebar_open = true;
-    }
-})
 
 
-// ---- Section Switcher ----
-function showSection(sectionId, title, icon) {
-    $('.content').removeClass('active');           // hide all sections
-    $('.sidebar-item').removeClass('active');       // remove active from all tabs
-    $('#' + sectionId).addClass('active');         // show target section
-    $('#page-title').text(title);                  // update topbar title
-    $('#page-icon').attr('class', 'bi ' + icon);  // update topbar icon
+// ---- Hide all content sections ----
+const hideAllContent = () => {
+    $('.content').removeClass('active');
 }
 
+// ---- Set active sidebar item ----
+const setSidebarActive = (el) => {
+    $('.sidebar-item').removeClass('active');
+    $(el).addClass('active');
+}
 
-// ---- Sidebar Tab Clicks ----
+// ---- Dashboard ----
 $('#dashboard_sidebar_tab').on('click', function () {
-    $(this).addClass('active');
-    showSection('dashboard_content', 'Dashboard', 'bi-house-door');
+    hideAllContent();
+    $('#dashboard_content').addClass('active');
+    $('#page-icon').attr('class', 'bi bi-house-door');
+    $('#page-title').text('Dashboard');
+    setSidebarActive(this);
+    if (typeof window._loadDashboard === 'function') window._loadDashboard();
 });
 
+// ---- Customer ----
 $('#customer_sidebar_tab').on('click', function () {
-    $(this).addClass('active');
-    showSection('customer_content', 'Customer Management', 'bi-person');
+    hideAllContent();
+    $('#customer_content').addClass('active');
+    $('#page-icon').attr('class', 'bi bi-person');
+    $('#page-title').text('Customer Management');
+    setSidebarActive(this);
 });
 
+// ---- Item Tab ----
 $('#item_sidebar_tab').on('click', function () {
-    $(this).addClass('active');
-    showSection('item_content', 'Item Management', 'bi-box-seam');
+    hideAllContent();
+    $('#item_content').addClass('active');
+    $('#page-icon').attr('class', 'bi bi-box-seam');
+    $('#page-title').text('Item Management');
+    setSidebarActive(this);
 });
 
+// ---- Order----
 $('#order_sidebar_tab').on('click', function () {
-    $(this).addClass('active');
-    showSection('order_content', 'Order Management', 'bi-receipt');
+    hideAllContent();
+    $('#order_content').addClass('active');
+    $('#page-icon').attr('class', 'bi bi-receipt');
+    $('#page-title').text('Order Management');
+    setSidebarActive(this);
+
+
+    if (typeof window._loadCustomerDropdown === 'function') window._loadCustomerDropdown();
+    if (typeof window._loadItemDropdown === 'function')     window._loadItemDropdown();
 });
 
+// ---- Order History ----
 $('#order_history_sidebar_tab').on('click', function () {
-    $(this).addClass('active');
-    showSection('order_history_content', 'Order History', 'bi-clock-history');
-    loadOrderHistoryTbl();  // reload fresh data every time
+    hideAllContent();
+    $('#order_history_content').addClass('active');
+    $('#page-icon').attr('class', 'bi bi-clock-history');
+    $('#page-title').text('Order History');
+    setSidebarActive(this);
+    if (typeof window._loadOrderHistoryTbl === 'function') window._loadOrderHistoryTbl();
 });
 
+// ---- Logout ----
 $('#logout_sidebar_tab').on('click', function () {
     Swal.fire({
         title: "Are you sure you want to logout?",
@@ -66,34 +78,7 @@ $('#logout_sidebar_tab').on('click', function () {
     });
 });
 
-// ------------------------ Sidebar Handler --------------------------
-
-
-
-
-
-// $('#item_content').css('display', 'none');
-//
-// $('#customer_sidebar_tab').on('click', function () {
-//     $('#item_content').css('display', 'none');
-//     $('#customer_content').css('display', 'block');
-//     $('#order_content').css('display', 'none');
-// })
-//
-// $('#item_sidebar_tab').on('click', function () {
-//     $('#item_content').css('display', 'block');
-//     $('#customer_content').css('display', 'none');
-//     $('#order_content').css('display', 'none');
-//
-// })
-//
-// $('#order_sidebar_tab').on('click', function () {
-//     $('#item_content').css('display', 'none');
-//     $('#customer_content').css('display', 'none');
-//     $('#order_content').css('display', 'block');
-// })
-
-
-
-
-// ------------------------ Sidebar Handler --------------------------
+// ---- Mobile hamburger ----
+$('#menu_btn').on('click', function () {
+    $('#sidebar').toggleClass('open');
+});

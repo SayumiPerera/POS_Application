@@ -17,7 +17,7 @@ function generateOrderId() {
 const setOrderId = () => {
     $('#order_id_input').val(generateOrderId());
 }
-setOrderId(); // run immediately when module loads
+setOrderId();
 
 
 // ---- Populate Customer Dropdown ----
@@ -250,7 +250,7 @@ $('#order_save_btn').on('click', function () {
 
     cleanOrderForm();
     loadOrderTbl();
-    loadOrderHistoryTbl(); // update history immediately
+    loadOrderHistoryTbl();
 })
 
 
@@ -335,7 +335,7 @@ $('#order_history_clear_btn').on('click', function () {
 })
 
 
-// ---- Register on window so non-module SidebarController can call these ----
+// ---- Register on window ----
 window._loadCustomerDropdown = loadCustomerDropdown;
 window._loadItemDropdown     = loadItemDropdown;
 window._loadOrderHistoryTbl  = loadOrderHistoryTbl;
