@@ -11,8 +11,8 @@ const loadCustomerTbl = () => {
         let new_row = `<tr data-index="${index}">
             <td>${item.id}</td>
             <td>${item.name}</td>
-            <td>${item.contact}</td>
             <td>${item.address}</td>
+            <td>${item.contact}</td>
         </tr>`;
         $('#customer_tbody').append(new_row);
     });
@@ -20,9 +20,18 @@ const loadCustomerTbl = () => {
 
 
 //------------------------- Clean Customer Form ------------------------------
+
 const cleanCustomerForm = () => {
-    $('#customer_reset_btn').click();
+    $('#customer_id_input').val('');
+    $('#customer_name_input').val('');
+    $('#customer_contact_input').val('');
+    $('#customer_address_input').val('');
 }
+
+// Reset button click also clears the form
+$('#customer_reset_btn').on('click', function () {
+    cleanCustomerForm();
+})
 
 
 //------------------------- Click on Customer Row ------------------------------

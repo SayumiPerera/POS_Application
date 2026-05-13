@@ -34,9 +34,18 @@ $('#item_search_input').on('input', function () {
 
 
 //------------------------- Clean Item Form ------------------------------
+// FIX: manually clear each field instead of relying on reset button click
 const cleanItemForm = () => {
-    $('#item_reset_btn').click();
+    $('#item_code_input').val('');
+    $('#item_name_input').val('');
+    $('#item_unitPrice_input').val('');
+    $('#item_qty_input').val('');
 }
+
+
+$('#item_reset_btn').on('click', function () {
+    cleanItemForm();
+})
 
 
 //------------------------- Click on Item Row ------------------------------
