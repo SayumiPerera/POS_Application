@@ -3,7 +3,7 @@ import { getCustomerData } from '../model/CustomerModel.js';
 import { getItemData }     from '../model/ItemModel.js';
 import { getOrderData }    from '../model/OrderModel.js';
 
-// ---- Cards ----
+//  Cards
 function getTotalCustomers() {
     $('#dash_customers').text(getCustomerData().length);
 }
@@ -17,11 +17,12 @@ function getTotalOrders() {
 }
 
 function getTotalRevenue() {
-    let total = getOrderData().reduce((sum, order) => sum + order.total, 0);
+    // FIX: use order.totalPrice (not order.total)
+    let total = getOrderData().reduce((sum, order) => sum + parseFloat(order.totalPrice || 0), 0);
     $('#dash_revenue').text('$' + total.toFixed(2));
 }
 
-// ---- Recent Orders (last 5) ----
+// Recent Orders
 function getRecentOrders() {
     $('#dash_recent_tbody').empty();
     let orders = getOrderData();
@@ -33,40 +34,28 @@ function getRecentOrders() {
 
     [...orders].reverse().slice(0, 5).map(order => {
         let new_row = `<tr>
-            <td>${order.order_id}</td>
-            <td>${order.customer_name}</td>
-            <td>$${order.total.toFixed(2)}</td>
+            <td>${order.id}</td>
+            <td>${order.customerName}</td>
+            <td>$${parseFloat(order.totalPrice).toFixed(2)}</td>
             <td>${order.date}</td>
         </tr>`;
         $('#dash_recent_tbody').append(new_row);
     });
 }
 
-// ---- Low Stock Alert (qty <= 5) ----
-function getLowStockItems() {
-    let low_stock = getItemData().filter(item => item.qty <= 5);
-
-    if (low_stock.length > 0) {
-        let item_names = low_stock.map(i => `<b>${i.name}</b> (Qty: ${i.qty})`).join(', ');
-        Swal.fire({
-            icon: "warning",
-            title: "Low Stock Alert!",
-            html: `These items are running low: ${item_names}`,
-            confirmButtonColor: "#e8900a"
-        });
-    }
-}
-
-// ---- Load All ----
-export function loadDashboard() {
+// Load All
+function loadDashboard() {
     getTotalCustomers();
     getTotalItems();
     getTotalOrders();
     getTotalRevenue();
     getRecentOrders();
-    getLowStockItems();
 }
 
+
 loadDashboard();
+
+
+window._loadDashboard = loadDashboard;
 
 // =================== DashboardController.js ===================

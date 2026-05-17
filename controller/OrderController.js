@@ -3,7 +3,7 @@ import { getCustomerData } from '../model/CustomerModel.js';
 import { getItemData, getItemDataByCode } from '../model/ItemModel.js';
 
 
-// ---- Cart (temp storage for current order items) ----
+// ---- Cart  ----
 let cart = [];
 
 
@@ -127,7 +127,7 @@ const renderCart = () => {
 }
 
 
-// ---- Dynamically update qty in cart ----
+//
 $(document).on('input', '.cart-qty-input', function () {
     let index  = parseInt($(this).data('index'));
     let newQty = parseInt($(this).val());
@@ -283,13 +283,13 @@ $('#order_delete_btn').on('click', function () {
 })
 
 
-// ---- Reset ----
+// Reset
 $('#order_reset_btn').on('click', function () {
     cleanOrderForm();
 })
 
 
-// ---- Click on order row ----
+// Click on order row
 $('#order_tbody').on('click', 'tr', function () {
     let order_obj = getOrderDataByIndex($(this).index());
     if (!order_obj) return;
@@ -299,7 +299,7 @@ $('#order_tbody').on('click', 'tr', function () {
 })
 
 
-// ---- Order History: Search ----
+//  Order History: Search
 $('#order_history_search_btn').on('click', function () {
     let query   = $('#order_history_search_input').val().trim();
     let results = searchOrdersByCustomer(query);
@@ -328,14 +328,14 @@ $('#order_history_search_btn').on('click', function () {
 })
 
 
-// ---- Order History: Clear search ----
+// Order History:clear searcg
 $('#order_history_clear_btn').on('click', function () {
     $('#order_history_search_input').val('');
     loadOrderHistoryTbl();
 })
 
 
-// ---- Register on window ----
+// Register
 window._loadCustomerDropdown = loadCustomerDropdown;
 window._loadItemDropdown     = loadItemDropdown;
 window._loadOrderHistoryTbl  = loadOrderHistoryTbl;

@@ -1,6 +1,6 @@
 // =================== AuthenticationController.js ===================
 
-// ---- Hardcoded Credentials (no backend needed) ----
+// Credentials
 const VALID_USERNAME = 'sayumi';
 const VALID_PASSWORD = '1234';
 
@@ -16,12 +16,12 @@ $('#toggle_eye').on('click', function () {
     }
 });
 
-// ---- Allow Enter key to sign in ----
+//Enter key to sign in
 $('#username_input, #password_input').on('keydown', function (e) {
     if (e.key === 'Enter') $('#signin_btn').click();
 });
 
-// ---- Sign In ----
+//Sign In
 $('#signin_btn').on('click', function () {
     const username = $('#username_input').val().trim();
     const password = $('#password_input').val();
@@ -46,7 +46,7 @@ $('#signin_btn').on('click', function () {
     }
 });
 
-// ---- Logout ----
+// Logout
 $('#logout_sidebar_tab').on('click', function () {
     Swal.fire({
         title: "Are you sure you want to logout?",

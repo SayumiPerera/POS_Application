@@ -13,15 +13,15 @@ class Order {
     #date;
 
     constructor(id, customerName, itemList, qty, totalPrice, date) {
-        this.#id           = id;
+        this.#id  = id;
         this.#customerName = customerName;
-        this.#itemList     = itemList;
-        this.#qty          = qty;
-        this.#totalPrice   = totalPrice;
-        this.#date         = date;
+        this.#itemList = itemList;
+        this.#qty  = qty;
+        this.#totalPrice  = totalPrice;
+        this.#date = date;
     }
 
-    get id()  {
+    get id() {
         return this.#id;
     }
     get customerName() {

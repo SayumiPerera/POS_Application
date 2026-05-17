@@ -15,29 +15,29 @@ class Item {
         this.#qty = qty;
     }
 
-    get code()      {
+    get code() {
         return this.#code;
     }
-    get name()      {
+    get name(){
         return this.#name;
     }
     get unitPrice() {
         return this.#unitPrice;
     }
-    get qty()       {
+    get qty(){
         return this.#qty;
     }
 
-    set code(code)           {
+    set code(code) {
         this.#code = code;
     }
-    set name(name)           {
+    set name(name){
         this.#name = name;
     }
     set unitPrice(unitPrice) {
         this.#unitPrice = unitPrice;
     }
-    set qty(qty)             {
+    set qty(qty) {
         this.#qty = qty;
     }
 

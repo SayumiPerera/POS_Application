@@ -15,10 +15,10 @@ class Customer {
         this.#address = address;
     }
 
-    get id()      {
+    get id(){
         return this.#id;
     }
-    get name()    {
+    get name(){
         return this.#name;
     }
     get contact() {
@@ -28,10 +28,10 @@ class Customer {
         return this.#address;
     }
 
-    set id(id)           {
+    set id(id){
         this.#id = id;
     }
-    set name(name)       {
+    set name(name){
         this.#name = name;
     }
     set contact(contact) {

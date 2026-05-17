@@ -28,7 +28,7 @@ const cleanCustomerForm = () => {
     $('#customer_address_input').val('');
 }
 
-// Reset button click also clears the form
+
 $('#customer_reset_btn').on('click', function () {
     cleanCustomerForm();
 })
@@ -43,6 +43,15 @@ $('#customer_tbody').on('click', 'tr', function () {
     $('#customer_contact_input').val(customer_obj.contact);
     $('#customer_address_input').val(customer_obj.address);
 })
+
+
+//------------------------- Search Customer Table ------------------------------
+$('#customer_search_input').on('input', function () {
+    let query = $(this).val().toLowerCase();
+    $('#customer_tbody tr').each(function () {
+        $(this).toggle($(this).text().toLowerCase().includes(query));
+    });
+});
 
 
 //------------------------- Start: Customer Save ------------------------------
